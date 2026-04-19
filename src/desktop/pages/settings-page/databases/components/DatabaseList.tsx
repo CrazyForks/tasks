@@ -94,8 +94,8 @@ export const DatabaseList: React.FC = () => {
 
   return (
     <ItemGroup>
-      <div className="flex items-center justify-between gap-4 px-4 py-3">
-        <span className="text-sm font-medium text-t1">{databaseCountLabel}</span>
+      <div className={desktopStyles.SettingsItemContainer}>
+        <span className={desktopStyles.SettingsItemTitle}>{databaseCountLabel}</span>
         {isLoggedIn && cloudDatabasesCount < 3 && (
           <button
             type="button"
