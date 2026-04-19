@@ -48,7 +48,7 @@ export const HomeProjectItem: React.FC<ProjectItemProps> = ({ projectInfo, hideS
   const titleNode = isEditing ? (
     <input
       {...textAreaProps}
-      className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap bg-transparent text-base leading-6 font-medium outline-none"
+      className={styles.homeProjectItemEditingInput}
     />
   ) : (
     <TaskItemTitle
@@ -70,10 +70,7 @@ export const HomeProjectItem: React.FC<ProjectItemProps> = ({ projectInfo, hideS
       {...attributes}
       {...listeners}
       className={classNames(
-        'flex items-start',
-        styles.taskItemPaddingX,
-        styles.taskItemHeight,
-        styles.taskItemGap,
+        styles.homeProjectItemRoot,
         itemClassName,
         className,
         {
@@ -91,12 +88,12 @@ export const HomeProjectItem: React.FC<ProjectItemProps> = ({ projectInfo, hideS
       <button className={classNames(styles.taskItemIconSize)}>
         <MobileProjectCheckbox status={projectInfo.status} progress={projectInfo.progress} />
       </button>
-      <div className="flex-1 flex flex-col gap-0.5 min-w-0">
-        <div className="flex items-center gap-1.5 min-w-0">
+      <div className={styles.homeProjectItemContent}>
+        <div className={styles.homeProjectItemTitleRow}>
           {titleNode}
           {!isEditing && (
             <>
-              <div className="flex items-center gap-1 text-t3 shrink-0">
+              <div className={styles.homeProjectItemMetaIcons}>
                 <TaskItemIcons tags={projectInfo.tags} notes={projectInfo.notes} navIcon={false} />
               </div>
             </>

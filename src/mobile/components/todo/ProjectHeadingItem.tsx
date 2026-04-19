@@ -42,16 +42,22 @@ export const ProjectHeadingItem: React.FC<ProjectHeadingItemProps> = ({ projectH
     return <DragItem ref={setNodeRef} attributes={attributes} listeners={listeners} style={style} />;
   }
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners} className={'pt-3'}>
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className={styles.projectHeadingItemSpacingTop}
+    >
       <div
         className={classNames(
           styles.taskItemPaddingX,
           styles.taskItemHeight,
           styles.listItemRound,
           itemClassName,
-          'flex items-center justify-between text-base font-medium',
+          styles.projectHeadingItemRow,
           {
-            ['line-through opacity-50']: projectHeadingInfo.isArchived,
+            [styles.projectHeadingItemArchived]: projectHeadingInfo.isArchived,
             [styles.listItemEditingBackground]: isEditing,
           },
           className
@@ -61,15 +67,15 @@ export const ProjectHeadingItem: React.FC<ProjectHeadingItemProps> = ({ projectH
         {isEditing ? (
           <input
             {...textAreaProps}
-            className="flex-1 overflow-hidden bg-transparent outline-none pl-1 tracking-wider uppercase"
+            className={styles.projectHeadingItemEditingInput}
           />
         ) : (
-          <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap bg-transparent text-t1 uppercase tracking-wider pl-1">
+          <span className={styles.projectHeadingItemLabel}>
             {projectHeadingInfo.title}
           </span>
         )}
-        <button className="flex items-center justify-center size-7 text-t3 opacity-40" onClick={handleMenuClick}>
-          <MenuIcon className="size-4" strokeWidth={1.5} />
+        <button className={styles.projectHeadingItemMenuButton} onClick={handleMenuClick}>
+          <MenuIcon className={styles.projectHeadingItemMenuIcon} strokeWidth={1.5} />
         </button>
       </div>
     </div>
