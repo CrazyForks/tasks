@@ -17,7 +17,7 @@ interface TaskIconProps {
   className?: string;
 }
 
-export const gsTaskIcon: React.FC<TaskIconProps> = ({ status, size = 'md', className }) => {
+export const TaskIcon: React.FC<TaskIconProps> = ({ status, size = 'md', className }) => {
   const isCompleted = status === 'completed';
   const isCanceled = status === 'canceled' || status === 'cancelled';
   const pixelSize = sizeMap[size];
@@ -64,5 +64,3 @@ export const gsTaskIcon: React.FC<TaskIconProps> = ({ status, size = 'md', class
     </span>
   );
 };
-
-export const TaskIcon = gsTaskIcon;
